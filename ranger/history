@@ -1,0 +1,26 @@
+delete Curso de guitarra 2014/
+rename fzu
+rename mono
+remame FZU
+rename FZU
+rename dox
+rename dwn
+rename dsk
+rename lib
+rename pix
+rename Autodidact
+rename DSML
+rename FinMark
+rename Code
+rename MITCalc1
+rename CS
+rename MLDLBooks
+rename brightness+
+rename brightness+.sh
+
+sxiv *.jpg
+!sxiv .jpg
+shell sxiv *.jpg %s
+delete
+open_with `
+open_with 

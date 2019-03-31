@@ -1,0 +1,365 @@
+# Should you change your keyboard layout some time, delete
+# this file and re-run i3-config-wizard(1).
+
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# Disable title bars
+for_window [class="^.*"] border pixel 3  
+# Set Super as mod
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Roboto 8
+
+# Set colors from Xresources
+# # Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# # from the generated scheme.
+# # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# # it fails to get colors from Xresources.
+set_from_resource $c1 i3wm.color1 #f0f0f0
+set_from_resource $c2 i3wm.color2 #f0f0f0
+set_from_resource $c3 i3wm.color3 #f0f0f0
+set_from_resource $c4 i3wm.color4 #f0f0f0
+set_from_resource $c5 i3wm.color5 #f0f0f0
+set_from_resource $c6 i3wm.color6 #f0f0f0
+set_from_resource $c7 i3wm.color7 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $c2     $c2     $c4  $c2       $c2
+client.focused_inactive $c2     $c2     $c4  $c2       $c2
+client.unfocused        $c2     $c2     $c4  $c2       $c2
+client.urgent           $c2     $c2     $c4  $c2       $c2
+client.placeholder      $c2     $c2     $c4  $c2       $c2
+
+client.background       $c2
+
+# i3-gaps
+gaps inner 15
+gaps outer 15
+smart_borders on
+
+bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
+
+# set workspace variables
+set $ws1 "1: "
+set $ws2 "2: " 
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7:  "
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: " 
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# #---Dropdown Windows---# #
+# # General dropdown window traits. The order can matter.
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] sticky enable
+for_window [instance="dropdown_*"] scratchpad show
+for_window [instance="dropdown_tmuxdd"] resize set 625 450
+for_window [instance="dropdown_dropdowncalc"] resize set 800 300
+for_window [instance="dropdown_tmuxdd"] border pixel 3
+for_window [instance="dropdown_dropdowncalc"] border pixel 2
+for_window [instance="dropdown_*"] move position center
+
+# Definitions
+set $TERMINAL 	st
+set $BROWSER 	google-chrome
+set $EDITOR 	code
+set $exe   	exec --no-startup-id exec
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Eyecare
+$exe redshift
+ 
+# Window Transparency 
+$exe compton --backend glx --vsync opengl 
+
+# start a terminal
+bindsym $mod+Return $exe $TERMINAL
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d $exe dmenu_run -nb "$c7" -nf "$c1" -sb "$c1" -sf "$c7"
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move workspace to other monitor
+bindsym $mod+Tab move workspace to output right
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+       bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#       position top
+#       mode dock
+#       separator_symbol ":|:" 
+#       modifier None
+#       status_command i3status
+#       font xft: Roboto 11, LineAwesome 11   
+#       colors {
+#       background $c2 
+#       statusline $c7
+#       separator  $c1
+#
+#       focused_workspace  #4c7899 #285577 #ffffff
+#       active_workspace   #333333 #5f676a #ffffff
+#       inactive_workspace #333333 #222222 #888888
+#       urgent_workspace   #2f343a #900000 #ffffff
+#       binding_mode       #2f343a #900000 #ffffff
+#   }
+#}
+
+##===================================================##
+##        *** Workspace specific settings ***        ##
+##===================================================##
+
+# Basic keybindings and default workspaces
+
+set $mode_open_application Open App:
+
+mode "$mode_open_application" {
+
+	bindsym w $exe 		$BROWSER,		mode "default" 
+	bindsym c $exe 		$EDITOR,		mode "default"
+	bindsym t $exe 		telegram-desktop,	mode "default"
+	bindsym a $exe 		slack, 			mode "default"
+	bindsym s $exe 		spotify,		mode "default" 
+	bindsym g $exe 		gitkraken,		mode "default"
+	bindsym x $exe 		musixmatch,		mode "defaul"
+	bindsym z $exe		cpod,			mode "default"
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+
+}
+
+bindsym $mod+o mode "$mode_open_application"
+
+assign [class="Code"]		$ws3
+assign [class="Google-chrome"]  $ws1
+assign [class="Telegram"]  	$ws4
+assign [class="Slack"]		$ws4
+for_window [class="Spotify"]	move to workspace $ws10
+assign [class="Gitkraken"]   	$ws9
+assign [class="Musixmatch"] 	$ws10
+assign [class="Cpod"]      	$ws8
+
+
+# Volume control
+
+# Path to volume control, without trailing slash
+set $volumepath ~/i3-volume
+
+# Command for the status line (used with -t, requires -u)
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line (used with -u, requires -t)
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage (used with -i, -d)
+set $volumestep 5
+
+# alsa-utils settings when not using pulseaudio-utils
+#
+# To configure a default card, see https://www.alsa-project.org/main/index.php/Asoundrc
+#
+# Card number to control. (used with -a and -c)
+#   If not specified, i3-volume will let `amixer` use a default.
+#   List cards: aplay -l
+#set $alsacard 1
+
+# Uncomment to use alsa-utils (append "-c $alsacard" without quotes to override default card)
+#bindsym XF86AudioRaiseVolume exec $volumepath/volume -anp -i $volumestep -t $statuscmd -u $statussig
+#bindsym XF86AudioLowerVolume exec $volumepath/volume -anp -d $volumestep -t $statuscmd -u $statussig
+#bindsym XF86AudioMute        exec $volumepath/volume -amn -t $statuscmd -u $statussig
+
+# pulseaudio-utils settings when not using alsa-utils
+#
+# Symbolic name for sink (numeric index not supported) (used with -s $sinkname)
+#   Recommended: comment out this setting and omit the -s option to use default sink
+#   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}'
+#set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo
+
+# Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
+bindsym XF86AudioRaiseVolume exec $volumepath/volume -np -i $volumestep -t $statuscmd -u $statussig
+bindsym XF86AudioLowerVolume exec $volumepath/volume -np -d $volumestep -t $statuscmd -u $statussig
+bindsym XF86AudioMute        exec $volumepath/volume -mn -t $statuscmd -u $statussig
+
+
+# Sreen brightness controls
+
+# increase screen brightness
+bindsym $mod+m $exe  ~/bin/brightness+.sh
+
+# decrease screen brightness
+bindsym $mod+n $exe  ~/bin/brightness-.sh 
+
+# Change keyboard layout
+exec_always "setxkbmap -layout us,cz,es"
+exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
+
+# Power mode
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+
+mode "$mode_system" {
+
+    bindsym l $exe 	$Locker, mode "default"
+    bindsym e $exe 	i3-msg exit, mode "default"
+    bindsym s $exe 	$Locker && systemctl suspend, mode "default"
+    bindsym h $exe 	$Locker && systemctl hibernate, mode "default"
+    bindsym r $exe 	systemctl reboot, mode "default"
+    bindsym Shift+s 	$exe systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}  
+
+bindsym $mod+Pause mode "$mode_system"
+
+# Set Wallpaper
+$exe wal -i ~/pix/Wallpapers/purple_2.jpg
+
+# Screen Shots
+bindsym Print $exe scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+F11 $exe gnome-screenshot -i
+ 
+# Polybar
+exec_always --no-startup-id ~/bin/polybarstart
+
+# Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Show the sup-mail scratchpad window, if any.
+bindsym $mod+equal [title="^Sup ::"] scratchpad show
+
+# Close everything
+bindsym $mod+Delete exec ~/bin/close_windows.sh

@@ -1,0 +1,23 @@
+# Aliases
+alias root="root -l"
+alias Octave="flatpak run org.octave.Octave"
+alias b+="~/bin/brightness+.sh"
+alias b-="~/bin/brightness-.sh"
+alias hdmi="pacmd set-card-profile 0 output:hdmi-stereo"
+alias analog="pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo"
+alias lvol="amixer sset Master 20%-"
+alias hvol="amixer sset Master 20%+"
+alias showifi="nmcli dev wifi"
+alias wificonnect="nmcli device wifi connect"
+alias cs="xclip"
+alias vs="xclip -o"
+alias gmake=" cmake -DGeant4_DIR=/home/autodidactic/GEANT4/build/GEANT4/lib/Geant4-10.5.0"
+alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/autodidactic/bin/"'
+alias sapi='sudo apt-get install'
+alias sapr='sudo apt-get remove'
+alias sapu='sudo apt-get update && sudo apt-get upgrade -y'
+alias cl='clear'
+alias clall='~/bin/close_windows.sh'
+alias ram='watch "ps --sort -rss -eo pid,pmem,rss,vsz,comm | head -16"'
+
+
