@@ -13,11 +13,43 @@ alias cs="xclip"
 alias vs="xclip -o"
 alias gmake=" cmake -DGeant4_DIR=/home/autodidactic/GEANT4/build/GEANT4/lib/Geant4-10.5.0"
 alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/autodidactic/bin/"'
-alias sapi='sudo apt-get install'
-alias sapr='sudo apt-get remove'
-alias sapu='sudo apt-get update && sudo apt-get upgrade -y'
+########################
+#     I N S T A L L    #
+########################
+alias paci='sudo pacman -S'
+alias pacu='sudo pacman -Syu'
+alias pacr='sudo pacman -R'
+alias auri='yaourt -S'
+alias pipi='pip install'
+alias pipr='pip install -r'
+########################
+#       U T I L S      #
+########################
 alias cl='clear'
 alias clall='~/bin/close_windows.sh'
 alias ram='watch "ps --sort -rss -eo pid,pmem,rss,vsz,comm | head -16"'
-
-
+alias ill='sudo dpkg -i'
+alias ka='killall'
+alias venv='virtualenv'
+alias cin='source ~/anaconda3/bin/activate'
+alias conde='conda deactivate'
+alias walls='cd ~/pix/walls/'
+alias wall='wal -i ~/pix/walls/'
+alias fill='feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"'
+#########################
+#	  G I T		#
+#########################
+alias gplo='git pull origin'
+alias gpso='git push origin'
+alias gplom='git pull origin master'
+alias gpsom='git push origin master'
+alias ga='git add -A'
+alias gc='git commit -m'
+alias gcl='git clone'
+#########################
+#	C O N F		#
+#########################
+alias i3conf='vim ~/.i3/config'
+alias bashrc='vim ~/.bashrc && source ~/.bashrc'
+alias aliasrc='vim ~/.config/aliasrc && source ~/.bashrc'
+alias xrc='vim ~/.Xresources'
