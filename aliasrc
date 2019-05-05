@@ -1,4 +1,6 @@
-# Aliases
+########################
+#     A L I A S E S    #
+########################
 alias root="root -l"
 alias Octave="flatpak run org.octave.Octave"
 alias b+="~/bin/brightness+.sh"
@@ -16,10 +18,11 @@ alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbi
 ########################
 #     I N S T A L L    #
 ########################
-alias paci='sudo pacman -S'
+alias paci='sudo pacman -S --noconfirm'
 alias pacu='sudo pacman -Syu'
 alias pacr='sudo pacman -R'
-alias auri='yaourt -S'
+alias auri='yaourt -S --noconfirm'
+alias aurr='yaourt -R'
 alias pipi='pip install'
 alias pipr='pip install -r'
 ########################
@@ -34,8 +37,18 @@ alias venv='virtualenv'
 alias cin='source ~/anaconda3/bin/activate'
 alias conde='conda deactivate'
 alias walls='cd ~/pix/walls/'
-alias wall='wal -i ~/pix/walls/'
+alias wal='wal -i'
 alias fill='feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"'
+alias consrc='source ~/anaconda3/bin/activate'
+alias exar='xarchiver -e'
+alias cbayes='cd /home/autodidactic/lib/projects/abradatas/bayesiansurvivalanalysis-webapp/'
+alias shot='escrotum -s'
+alias venvsrc='source venv/bin/activate'
+alias pymain='python main.py'
+alias default='vim ~/.config/mimeapps.list'
+alias z='zathura'
+alias stsvc='sudo systemctl start'
+alias trc='transmission-remote-cli -c arch:linux@localhost:9091'
 #########################
 #	  G I T		#
 #########################
@@ -46,6 +59,8 @@ alias gpsom='git push origin master'
 alias ga='git add -A'
 alias gc='git commit -m'
 alias gcl='git clone'
+alias gb='git branch -a'
+alias gst='git status'
 #########################
 #	C O N F		#
 #########################
@@ -53,3 +68,5 @@ alias i3conf='vim ~/.i3/config'
 alias bashrc='vim ~/.bashrc && source ~/.bashrc'
 alias aliasrc='vim ~/.config/aliasrc && source ~/.bashrc'
 alias xrc='vim ~/.Xresources'
+alias vimrc='vim ~/.vimrc'
+alias polyrc='vim ~/.config/polybar/config'
