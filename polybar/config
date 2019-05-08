@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-background = #555555
+background = #aa555555
 background-alt = ${xrdb:color3:#222}
 foreground = ${xrdb:color7:#222}
 foreground-alt = ${xrdb:color2:#555}
@@ -27,58 +27,92 @@ primary = ${xrdb:color7:#222}
 secondary = ${xrdb:color0:#222} 
 
 [bar/autodidactic]
+;https://github.com/jaagr/polybar/wiki/Configuration
 monitor = ${env:MONITOR}
+;monitor-fallback = HDMI1
+monitor-strict = false
+override-redirect = false
+bottom = false
+fixed-center = false
 width = 100%
-height = 30 
-;offset-x = 0% 
-;offset-y = 10%
-radius = 0.0
-fixed-center = false 
+height = 27
+;offset-x = 1%
+;offset-y = 1%
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 4
-line-color = ${colors.foreground} 
+; Background gradient (vertical steps)
+;   background-[0-9]+ = #aarrggbb
+;background-0 =
 
-spacing = 2
+radius = 0.0
+line-size = 3
+line-color = #282c34
+
 border-size = 0
-border-color = #fff
+;border-left-size = 25
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #282c34
 
-padding-left = 3 
-padding-right = 3
+padding-left = 2
+padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2 
+module-margin-left = 0
+module-margin-right = 0
+
 
 font-0 = Roboto:size=11;0
 font-1 = Font Awesome 5 Free Regular:size=11;1
 font-2 = Font Awesome 5 Free Solid:size=11;1
 font-3 = Font Awesome 5 Brands Regular:size=11;1
 
-modules-left = i3 music date weather
+modules-left = i3 music date weather 
 modules-center = xwindow 
-modules-right = pulseaudio xkeyboard memory cpu wlan temperature 
+modules-right = arrow1 pavolume arrow2 xkeyboard arrow3 memory arrow4 cpu arrow5 filesystem arrow6 temperature2 
+
+separator =
+
+;dim-value = 1.0
 
 tray-position = right
-tray-padding = 5
-;tray-background = #0063ff
+tray-detached = false
+tray-maxsize = 20
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 4
+tray-scale = 1.0
 
-;wm-restack = bspwm
+
+#i3: Make the bar appear below windows
 ;wm-restack = i3
- 
 ;override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+; Fallback click handlers that will be called if
+; there's no matching module handler found.
+click-left =
+click-middle =
+click-right =
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+double-click-left =
+double-click-middle =
+double-click-right =
 
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-
+; Requires polybar to be built with xcursor support (xcb-util-cursor)
+; Possible values are:
+; - default   : The default pointer as before, can also be an empty string (default)
+; - pointer   : Typically in the form of a hand
+; - ns-resize : Up and down arrows, can be used to indicate scrolling
+cursor-click =
+cursor-scroll =
 
 [module/weather]
 type = custom/script
@@ -101,16 +135,17 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 blakclist-1 = scroll lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline =${xrdb:color3:#333}
+format-foreground = #000
+format-background = #82AAFF
 
-label-layout = %layout%
-label-layout-underline = ${xrdb:color3:#333}
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = "%layout% "
 label-indicator-padding = 0
 label-indicator-margin = 0
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${xrdb:color3:#333}
+label-indicator-background = #fff
 
 [module/filesystem]
 type = internal/fs
@@ -118,9 +153,12 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = "%{F#0a81f5}%mountpoint%%{F-}DISK %percentage_used%% "
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = #000
+
+label-mounted-background = #b416ad
+label-mounted-foreground = #000
 
 #[module/bspwm]
 #
@@ -249,12 +287,48 @@ label-unmounted-foreground = ${colors.foreground-alt}
 #label-separator-foreground = #ffb52a
 
 [module/i3]
+;https://github.com/jaagr/polybar/wiki/Module:-i3
 type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-enable-scroll = false
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
 pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = false
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = true
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces
+; containing 'code' in the label
+; Default: false
+fuzzy-match = false
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
@@ -310,20 +384,45 @@ type = internal/backlight
 card = intel_backlight
 
 [module/cpu]
+;https://github.com/jaagr/polybar/wiki/Module:-cpu
 type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color6:#222}
-label = %percentage:2%%
+; Seconds to sleep between updates
+; Default: 1
+interval = 5
+format-prefix = "  "
+format-prefix-foreground = #282c34
+format-foreground = #000
+format-background = #F07178
+
+label-font = 1
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+;
+format = <label>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = "CPU %percentage:3%% "
+
+
 
 [module/memory]
+
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color7:#222}
-label = %percentage_used%%
+format-prefix = "  "
+label = RAM  %percentage_used%%
+format-prefix-foreground = #292d3e
+format-foreground = #000
+format-background = #C792EA
+
+
 
 [module/wlan]
 type = internal/network
@@ -331,30 +430,37 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${xrdb:color4:#222}
-label-connected = %essid%
+format-connected-underline = #FFE585
+label-connected = %essid% 
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = <label-disconnected>
+format-disconnected-underline = #000
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = #000
 
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = #000
+
+format-connected-prefix = "  "
+
+format-connected-prefix-foreground = #292d3e
+format-connected-foreground = #000
+format-connected-background = #FFE585
+
+format-foreground = #000
 
 [module/eth]
 type = internal/network
 interface = enp4s0
 interval = 3.0
 
-format-connected-underline = ${xrdb:color1:#222}
+format-connected-underline = ${xrdb:color4:#222}
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${xrdb:color1:#222}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -363,48 +469,81 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+;[module/date]
+;type = internal/date
+;interval = 5
+;
+;date =
+;date-alt = " %Y-%m-%d"
+;
+;time = %H:%M
+;time-alt = %H:%M:%S
+;
+;format-prefix = 
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${xrdb:color7:#222}
+;
+;label = %date% %time%
+
 [module/date]
-type = internal/date
+type = custom/script
+exec = ~/bin/popup-calendar.sh
 interval = 5
+click-left = ~/bin/popup-calendar.sh --popup
+click-right = ~/bin/popup-calendar.sh --popup
+;format-background = #abb2bf
+;format-foreground = #282c34
+label ="  %output:10% "
 
-date =
-date-alt = " %Y-%m-%d"
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = #000
+format-background = #C3E88D
 
-time = %H:%M
-time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color7:#222}
 
-label = %date% %time%
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = | Clouds & Dirt | Volume: %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+;[module/pulseaudio]
+;
+;type = internal/pulseaudio
+;
+;format-prefix = " "
+;format-prefix-foreground = #282c34
+;format-foreground = ${colors.background}
+;format-background = #C792EA
+;
+;
+;format-foreground = #e06c75
+;format-background = #282c34
+;
+;format-volume = <label-volume> <bar-volume>
+;label-volume = Volume: %percentage%%
+;label-volume-foreground = #fff
+;label-muted = 🔇 STFU
+;label-muted-foreground = #fff
+;
+;bar-volume-width = 10
+;bar-volume-foreground-0 = #55aa55
+;bar-volume-foreground-1 = #55aa55
+;bar-volume-foreground-2 = #55aa55
+;bar-volume-foreground-3 = #55aa55
+;bar-volume-foreground-4 = #55aa55
+;bar-volume-foreground-5 = #f5a70a
+;bar-volume-foreground-6 = #ff5555
+;bar-volume-gradient = false
+;bar-volume-indicator = 
+;bar-volume-indicator-font = 2
+;bar-volume-fill = ─
+;bar-volume-fill-font = 2
+;bar-volume-empty = ─
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = #e06c75
 
 [module/battery]
 type = internal/battery
@@ -439,38 +578,33 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = ${xrdb:color1:#fff} 
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+[module/temperature2]
+type = custom/script
+exec = ~/.config/polybar/scripts/tempcores.sh
+interval = 2
+format-padding = 1
+format-foreground = ${colors.foreground}
+format-background = #292d3e
+format-underline = #292d3e
+format-prefix-foreground = #C1B93E
+label =  %output:0:150: %
 
 [module/powermenu]
 type = custom/menu
 
-expand-right = true
+expand-right = false
 
-format-spacing = 1
+format-spacing = 5
+
+format-background = #FFE585
+format-foreground = #000
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = #000
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = #000
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = #000
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
@@ -487,18 +621,81 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
+
+################################################################################
+################################################################################
+############                         ARROWS                        #############
+################################################################################
+################################################################################
+
+################################################################################
+###############################################################################
+############                       MODULES ARROWS                     ############
+################################################################################
+################################################################################
+
+
+[module/arrow1]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #C3E88D
+content-background = #C3E88D
+
+[module/arrow2]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #000
+content-background = #C3E88D
+
+[module/arrow3]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #000
+content-background = #82AAFF
+
+[module/arrow4]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #000
+content-background = #C792EA
+
+[module/arrow5]
+; grey to Blue
+type = custom/text
+content = "%{T2}  %{T--}"
+content-font = 2
+content-foreground = #000
+content-background = #b416ad
+
+[module/arrow6]
+; grey to Blue
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #000
+content-background = #292d3e
+
 [settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
+;compositing-background = over
+compositing-foreground = over
+compositing-underline = over
+compositin-overline = over
+compositing-border = over
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
+margin-top = 0
+margin-bottom = 0
 
 enable-ipc = true 

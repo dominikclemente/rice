@@ -3,12 +3,8 @@
 ########################
 alias root="root -l"
 alias Octave="flatpak run org.octave.Octave"
-alias b+="~/bin/brightness+.sh"
-alias b-="~/bin/brightness-.sh"
 alias hdmi="pacmd set-card-profile 0 output:hdmi-stereo"
 alias analog="pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo"
-alias lvol="amixer sset Master 20%-"
-alias hvol="amixer sset Master 20%+"
 alias showifi="nmcli dev wifi"
 alias wificonnect="nmcli device wifi connect"
 alias cs="xclip"
@@ -30,12 +26,13 @@ alias pipr='pip install -r'
 ########################
 alias cl='clear'
 alias clall='~/bin/close_windows.sh'
+alias exe='chmod +x'
 alias ram='watch "ps --sort -rss -eo pid,pmem,rss,vsz,comm | head -16"'
-alias ill='sudo dpkg -i'
 alias ka='killall'
 alias venv='virtualenv'
 alias cin='source ~/anaconda3/bin/activate'
 alias conde='conda deactivate'
+alias conact='conda activate' 
 alias walls='cd ~/pix/walls/'
 alias wal='wal -i'
 alias fill='feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"'
@@ -45,12 +42,16 @@ alias cbayes='cd /home/autodidactic/lib/projects/abradatas/bayesiansurvivalanaly
 alias shot='escrotum -s'
 alias venvsrc='source venv/bin/activate'
 alias pymain='python main.py'
-alias default='vim ~/.config/mimeapps.list'
 alias z='zathura'
 alias stsvc='sudo systemctl start'
 alias trc='transmission-remote-cli -c arch:linux@localhost:9091'
+alias proj='cd ~/lib/projects/'
+alias cdgrains='proj && cd abradatas/analysis/'
+alias grains='proj && cd abradatas/analysis/ && consrc && conact grains && jupyter-lab'
+alias backpy='conde && conde'
+alias ydl='youtube-dl'
 #########################
-#	  G I T		#
+#	      G I T         #
 #########################
 alias gplo='git pull origin'
 alias gpso='git push origin'
@@ -70,3 +71,4 @@ alias aliasrc='vim ~/.config/aliasrc && source ~/.bashrc'
 alias xrc='vim ~/.Xresources'
 alias vimrc='vim ~/.vimrc'
 alias polyrc='vim ~/.config/polybar/config'
+alias default='vim ~/.config/mimeapps.list'

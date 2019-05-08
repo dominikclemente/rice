@@ -45,6 +45,7 @@ font pango:Roboto 11
 
 set $BROWSER 	vivaldi-stable
 set $exe   	exec --no-startup-id exec
+set $sink `pactl list short sinks | grep RUNNING | cut -f1`
 
 # FLATPAK APPS
 set $CODE 	flatpak run com.visualstudio.code
@@ -259,6 +260,10 @@ for_window [class="Xfburn"] floating enable
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+# brightness to 0
+bindsym $mod+Shift+y exec "light -U 100; notify-send 'brightness 0'"
+bindsym $mod+Shift+u exec "light -A 100; notify-send 'brightness 100'"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -448,7 +453,7 @@ mode "$mode_open_application" {
 	bindsym g	  $exe		gitkraken,			mode "default"
 	bindsym x	  $exe		musixmatch,			mode "default"
 	bindsym p	  $exe		$PCSX2,				mode "default"
-	bindsym b    	  $exe		$FRAGMENTS,			mode "default"
+	bindsym b     $exe		$FRAGMENTS,			mode "default"
 	bindsym l	  $exe 		lutris, 			mode "default"
 	bindsym q	  $exe 		gnome-screenshot -a,		mode "default"
 	bindsym r	  $exe		gnome-screenshot -i,		mode "default"
