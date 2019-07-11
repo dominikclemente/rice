@@ -1,6 +1,6 @@
-# My i3 Manjaro 18.0.4 Illyria rice
+# My Arch Linux i3
 
-OS: Manjaro 18.0.4 Illyria
+OS: Arch Linux
 
 WM: i3
 
