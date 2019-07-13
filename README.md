@@ -1,3 +1,5 @@
+![alt text](screenshot.png)
+
 # My Arch Linux i3
 
 OS: Arch Linux
@@ -11,5 +13,3 @@ Terminal: urxvt (formerly st)
 Shell: bash
 
 Colorscheme: pywal
-
-Wallpapers: [Romain Trystam](https://romaintrystram.myportfolio.com/)
