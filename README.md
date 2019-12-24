@@ -1,6 +1,6 @@
 ![alt text](screenshot.png)
 
-# My Arch Linux i3
+# My BSPWM rice
 
 OS: Arch Linux
 
