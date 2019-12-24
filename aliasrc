@@ -1,15 +1,28 @@
 ########################
 #     A L I A S E S    #
 ########################
+alias jl='jupyter-lab'
+alias cl='clear'
+alias ll='ls -l'
+alias lla='ls -la'
+alias la='ls -a'
+alias sur='su root'
+alias lol='echo "abi.vsyscall32 = 0" >> /etc/sysctl.conf && sysctl -p'
 alias root="root -l"
 alias Octave="flatpak run org.octave.Octave"
 alias hdmi="pacmd set-card-profile 0 output:hdmi-stereo"
 alias analog="pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo"
 alias showifi="nmcli dev wifi"
 alias wificonnect="nmcli device wifi connect"
+alias vim='nvim'
+alias exe='chmod +x'
 alias cs="xclip"
 alias vs="xclip -o"
 alias gmake=" cmake -DGeant4_DIR=/home/autodidactic/GEANT4/build/GEANT4/lib/Geant4-10.5.0"
+alias eng='export LC_ALL=C'
+alias cz='unset LC_ALL'
+alias clall='~/bin/close_windows.sh'
+alias findapp='ps -ef | grep'
 alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/autodidactic/bin/"'
 ########################
 #     I N S T A L L    #
@@ -17,24 +30,26 @@ alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbi
 alias paci='sudo pacman -S --noconfirm'
 alias pacu='sudo pacman -Syu'
 alias pacr='sudo pacman -R'
-alias auri='yaourt -S --noconfirm'
-alias aurr='yaourt -R'
+alias auri='yay -S --noconfirm'
+alias aurr='yay -R'
 alias pipi='pip install'
 alias pipr='pip install -r'
 ########################
 #       U T I L S      #
 ########################
-alias cl='clear'
-alias clall='~/bin/close_windows.sh'
-alias exe='chmod +x'
+alias headspace='vifm ~/Music/Headspace/Take\ Series\ -\ Start\ Here/Take\ 10/'
 alias ram='watch "ps --sort -rss -eo pid,pmem,rss,vsz,comm | head -16"'
 alias ka='killall'
 alias venv='virtualenv'
+alias pulse='pulseaudio -k && pulseaudio --start'
 alias cin='source ~/anaconda3/bin/activate'
 alias conde='conda deactivate'
-alias conact='conda activate' 
-alias walls='cd ~/pix/walls/'
-alias wal='wal -i'
+alias conact='conda activate'
+alias const='source ~/bin/anaconda3/bin/activate'
+alias dvt='conda activate soai_dvt_backend'
+alias walls='cd ~/pix/Wallpapers/'
+#alias wal='wal -i'
+alias wallp='wal -i ~/pix/Wallpapers/one_piece_1.jpg'
 alias fill='feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"'
 alias consrc='source ~/anaconda3/bin/activate'
 alias exar='xarchiver -e'
@@ -42,16 +57,20 @@ alias cbayes='cd /home/autodidactic/lib/projects/abradatas/bayesiansurvivalanaly
 alias shot='escrotum -s'
 alias venvsrc='source venv/bin/activate'
 alias pymain='python main.py'
-alias z='zathura'
+alias za='zathura'
 alias stsvc='sudo systemctl start'
 alias trc='transmission-remote-cli -c arch:linux@localhost:9091'
 alias proj='cd ~/lib/projects/'
 alias cdgrains='proj && cd abradatas/analysis/'
-alias grains='proj && cd abradatas/analysis/ && consrc && conact grains && jupyter-lab'
+alias portlist='python -m serial.tools.list_ports -v'
+alias portconnect='python -m serial.tools.miniterm '
+alias earsj='cd ~/lib/abradatas/analysis/ && conact ears && st -e jupyter-lab & disown && conact ears && cd ~/lib/abradatas/analysis'
+alias grains='proj && abradatas/analysis/ && consrc && conact grains'
 alias backpy='conde && conde'
 alias ydl='youtube-dl'
+alias bl='backpy && blueman-applet & disown'
 #########################
-#	      G I T         #
+#	  G I T         #
 #########################
 alias gplo='git pull origin'
 alias gpso='git push origin'
@@ -62,13 +81,18 @@ alias gc='git commit -m'
 alias gcl='git clone'
 alias gb='git branch -a'
 alias gst='git status'
+alias gch='git checkout'
 #########################
 #	C O N F		#
 #########################
-alias i3conf='vim ~/.i3/config'
-alias bashrc='vim ~/.bashrc && source ~/.bashrc'
-alias aliasrc='vim ~/.config/aliasrc && source ~/.bashrc'
-alias xrc='vim ~/.Xresources'
+alias zshrc='vim ~/.zshrc'
+alias xinit='vim ~/.xinitrc'
+alias bspwmrc='vim ~/.config/bspwm/bspwmrc'
+alias bashrc='vim ~/.bashrc'
+alias aliasrc='vim ~/.config/aliasrc && source ~/.zshrc'
+alias xrc='vim ~/.Xresources && xrdb .Xresources'
 alias vimrc='vim ~/.vimrc'
 alias polyrc='vim ~/.config/polybar/config'
 alias default='vim ~/.config/mimeapps.list'
+alias sx='vim ~/.config/sxhkd/sxhkdrc'
+alias setup='xrdb ~/.Xresources && wallp & ~/.config/polybar/launch.sh && sleep 3 && st -e nitrogen --restore'

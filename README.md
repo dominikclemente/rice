@@ -4,12 +4,14 @@
 
 OS: Arch Linux
 
-WM: i3
+WM: bspwm, KDE Plasma
 
 Bar: Polybar
 
-Terminal: urxvt (formerly st)
+Terminal: st (formerly urxvt)
 
-Shell: bash
+Shell: zsh
+
+Shortcuts: sxhkd
 
 Colorscheme: pywal
