@@ -4,14 +4,11 @@ custom_background_dark 	= ${xrdb:custom_background_dark}
 custom_background_light = ${xrdb:custom_background_light}
 custom_primary    	 	= ${xrdb:custom_primary}
 custom_warn    	 		= ${xrdb:custom_warn}
-foreground 	    = ${xrdb:foreground}
-background 	= ${xrdb:custom_background_dark}
-background_light = ${xrdb:custom_background_light}
-primary    	 	= ${xrdb:custom_primary}
-warn    	 		= ${xrdb:custom_warn}
-
-
-
+foreground              = ${xrdb:foreground}
+background              = ${xrdb:custom_background_dark}
+background_light        = ${xrdb:custom_background_light}
+primary                 = ${xrdb:custom_primary}
+warn                    = ${xrdb:custom_warn}
 
 [bar/mainbar-bspwm]
 monitor      = ${env:MONITOR}
@@ -46,14 +43,14 @@ reverse-scroll = true
 pin-workspaces = true
 
 ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = " "
 format = <label-state> <label-mode>
