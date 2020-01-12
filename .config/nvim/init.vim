@@ -1,15 +1,19 @@
 " Basics "
 colorscheme gruvbox
 
-syntax enable
+set termguicolors
+
+syntax on
+
+set encoding=utf-8
 
 set tabstop=4 " number of visual spaces per TAB
 
-set softtabstop=4 " number of spaces in tab when editing
+set softtabstop=0
 
 set expandtab " tabs are spaces
 
-set number " show line numbers
+set number relativenumber " show line numbers
 
 set showcmd " show command in bottom bar
 
@@ -65,21 +69,25 @@ inoremap jk <esc>
 call plug#begin('~/.local/share/nvim/plugged')
 
         Plug 'lervag/vimtex'
-        let g:tex_flavor='latex'
-        let g:vimtex_view_method='zathura'
-        let g:vimtex_quickfix_mode=0
-        set conceallevel=1
-        let g:tex_conceal='abdmg'
+                let g:tex_flavor='latex'
+                let g:vimtex_view_method='zathura'
+                let g:vimtex_quickfix_mode=0
+                set conceallevel=1
+                let g:tex_conceal='abdmg'
 
         Plug 'sirver/ultisnips'
-        let g:UltiSnipsExpandTrigger = '<tab>'
-        let g:UltiSnipsJumpForwardTrigger = '<tab>'
-        let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+                let g:UltiSnipsExpandTrigger = '<tab>'
+                let g:UltiSnipsJumpForwardTrigger = '<tab>'
+                let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+        Plug 'KeitaNakamura/tex-conceal.vim'
+                set conceallevel=1
+                let g:tex_conceal='abdmg'   
 
         Plug 'vim-airline/vim-airline-themes'
         Plug 'vim-airline/vim-airline'
-        let g:airline_theme='onedark'
-        let g:airline_powerline_fonts = 1
+                let g:airline_theme='onedark'
+                let g:airline_powerline_fonts = 1
 
 
 call plug#end()
