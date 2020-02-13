@@ -1,5 +1,7 @@
 " Basics "
 colorscheme gruvbox
+hi NonText ctermbg=none
+hi Normal guibg=NONE ctermbg=NONE
 
 set termguicolors
 
@@ -41,6 +43,12 @@ set foldmethod=indent   " fold based on indent level
 
 " Remaps " 
 let mapleader="," " leader is comma
+
+" NerdTree mapping
+map <C-n> :NERDTreeToggle<CR>
+
+" fzf mapping 
+nnoremap <leader><leader> :FZF<CR>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -89,5 +97,20 @@ call plug#begin('~/.local/share/nvim/plugged')
                 let g:airline_theme='onedark'
                 let g:airline_powerline_fonts = 1
 
+        Plug 'skywind3000/vim-terminal-help'        
 
+        Plug 'preservim/nerdtree'
+
+        " Use release branch (Recommend)
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+        " post install (yarn install | npm install)
+        Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+        Plug 'tomlion/vim-solidity'
+
+        " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        " Both options are optional. You don't have to install fzf in ~/.fzf
+        " and you don't have to run the install script if you use fzf only in Vim.
 call plug#end()

@@ -1,4 +1,6 @@
-![alt text](screenshot.png)
+![Rice](screenshot.png)
+
+![Solidity environment](inheritance.png)
 
 # My BSPWM rice
 
