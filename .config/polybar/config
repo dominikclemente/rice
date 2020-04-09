@@ -29,10 +29,9 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=14;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=14;1"
 font-5 = Material Icons:fontformat=truetype:pixelsize=10:antialias=true;3
 
-
-modules-left   = left_end bspwm right_end
-modules-center = left_end xwindow right_end 
-modules-right  = left_end battery memory divider cpu divider temperature  divider wifi_down wifi_up eth_down eth_up divider keyboard divider volume divider date divider time right_end
+modules-left   = left_end2 bspwm right_end2
+modules-center = left_end2 xwindow right_end2 
+modules-right  = left_end2 memory divider cpu divider temperature  divider wifi_down wifi_up divider keyboard divider volume divider date divider time right_end2
 
 [module/bspwm]
 type = internal/bspwm
@@ -44,34 +43,34 @@ pin-workspaces = true
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = " "
-format = <label-state> <label-mode>
+format = <label-state> 
 
 label-focused = %icon%
 label-focused-background = ${colors.custom_background_light}
 label-focused-underline= #6790eb
-label-focused-padding = 2
+label-focused-padding = 1
 label-focused-foreground = ${colors.foreground}
 
 label-occupied = %icon%
-label-occupied-padding = 2
+label-occupied-padding = 1
 label-occupied-background = ${xrdb:color3::#333}
-
-
+; 
+; 
 label-urgent = %icon%
-label-urgent-padding = 2
-
+label-urgent-padding = 1
+ 
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
+label-empty-padding = 1
 label-empty-background = ${xrdb:color2:#222}
 label-monocle = "  "
 label-monocle-foreground = ${colors.foreground}
@@ -87,12 +86,12 @@ label-locked = "  "
 label-locked-foreground = ${colors.foreground}
 label-sticky = "  "
 label-sticky-foreground = ${colors.foreground}
-label-private =  "     "
-label-private-foreground = ${colors.foreground}
+ label-private =  "     "
+ label-private-foreground = ${colors.foreground}
 
 ; Separator in between workspaces
 ;label-separator = |
-;label-separator-padding = 10
+;label-separator-padding = 0
 ;label-separator-foreground = #ffb52a
 ${colors.background}
 format-foreground = ${colors.foreground}
@@ -107,7 +106,7 @@ type = internal/xwindow
 ;   %title%
 ; Default: %title%
 label = %title%
-label-maxlen = 50
+label-maxlen = 30
 
 format-prefix = "  "
 format-foreground = ${colors.foreground}
@@ -127,12 +126,28 @@ content            = "   -----[   "
 content-foreground = ${colors.custom_background_light}
 content-background = ${colors.custom_background_dark}
 
+[module/right_end2]
+type = custom/text
+
+content            = "   ]- "
+content-foreground = ${colors.custom_background_light}
+content-background = ${colors.custom_background_dark}
+
+[module/left_end2]
+type = custom/text
+
+content            = " -[   "
+content-foreground = ${colors.custom_background_light}
+content-background = ${colors.custom_background_dark}
+
 [module/right_end]
 type = custom/text
 
 content            = "   ]-----   "
 content-foreground = ${colors.custom_background_light}
 content-background = ${colors.custom_background_dark}
+
+
 
 [module/mpd]
 type = internal/mpd
@@ -387,7 +402,7 @@ blacklist-1 = scroll lock
 ;   %icon%
 ; Default: %layout%
 label-layout = %name%
-label-layout-padding = 5
+label-layout-padding = 1
 label-layout-background = ${colors.background}
 label-layout-foreground = ${colors.foreground}
 

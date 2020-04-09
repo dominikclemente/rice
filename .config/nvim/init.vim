@@ -74,6 +74,15 @@ nnoremap gV `[v`]
 " jk is escape
 inoremap jk <esc>
 
+" Limelight keymap
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
+" Goyo integration
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+
 call plug#begin('~/.local/share/nvim/plugged')
 
         Plug 'lervag/vimtex'
@@ -101,6 +110,33 @@ call plug#begin('~/.local/share/nvim/plugged')
 
         Plug 'preservim/nerdtree'
 
+        Plug 'junegunn/goyo.vim'
+
+        Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
+                " Color name (:help cterm-colors) or ANSI code
+                let g:limelight_conceal_ctermfg = 'gray'
+                let g:limelight_conceal_ctermfg = 240
+
+                " Color name (:help gui-colors) or RGB color
+                let g:limelight_conceal_guifg = 'DarkGray'
+                let g:limelight_conceal_guifg = '#777777'
+
+                " Default: 0.5
+                let g:limelight_default_coefficient = 0.7
+
+                " Number of preceding/following paragraphs to include (default: 0)
+                let g:limelight_paragraph_span = 1
+
+                " Beginning/end of paragraph
+                "   When there's no empty line between the paragraphs
+                "   and each paragraph starts with indentation
+                let g:limelight_bop = '^\s'
+                let g:limelight_eop = '\ze\n^\s'
+
+                " Highlighting priority (default: 10)
+                "   Set it to -1 not to overrule hlsearch
+                let g:limelight_priority = -1
+
         " Use release branch (Recommend)
         Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -109,8 +145,27 @@ call plug#begin('~/.local/share/nvim/plugged')
 
         Plug 'tomlion/vim-solidity'
 
+        Plug 'Shougo/unite.vim'
+
+        Plug 'rafaqz/citation.vim'
+
+        let g:citation_vim_bibtex_file="/path/to/your/bib/file/library.bib"
+        let g:citation_vim_mode="bibtex"
         " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         " Both options are optional. You don't have to install fzf in ~/.fzf
         " and you don't have to run the install script if you use fzf only in Vim.
+        "
+        "
+        " [Buffers] Jump to the existing window if possible
+        let g:fzf_buffers_jump = 1
+
+        " [[B]Commits] Customize the options used by 'git log':
+        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+        " [Tags] Command to generate tags file
+        let g:fzf_tags_command = 'ctags -R'
+
+        " [Commands] --expect expression for directly executing the command
+        let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 call plug#end()

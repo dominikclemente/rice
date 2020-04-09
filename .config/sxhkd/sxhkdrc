@@ -30,7 +30,7 @@ ctrl + alt + Delete
 	bspc quit
 
 # restart bspwm
-super + shift + r
+super + shift + a
 
 # close and kill
 super + shift + q
@@ -69,6 +69,11 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
+
+ctrl + alt + {Right, Left}
+    DIR={next,prev}; \
+    bspc node -d "$DIR"; \
+    bspc desktop -f "$DIR"
 
 # Move window to other monitor
 alt + shift + {h,l}
@@ -146,68 +151,25 @@ super + {Left,Down,Up,Right}
 
 # terminal emulator
 super + Return
-	st
-# launch ncpamixer
-super + alt + a
-    st -e ncpamixer
-# launch surf browser
-super + alt + b
-    surf www.youtube.com/c/DistroTube
-# launch cmus
-super + alt + c
-    st -e cmus
-# launch lynx web browser
-super + alt + l
-    st -e lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys gopher://distro.tube
-# launch irssi chat client
-super + alt + i
-    st -e irssi
-# launch joplin
-super + alt + j
-    st -e joplin
-# launch toot cli
-super + alt + m
-    st -e toot curses
-# launch newsboat feed reeder
-super + alt + n
-    st -e newsboat
-# launch pianobar
-super + alt + p
-    st -e pianobar
-# launch rtv
-super + alt + r
-    st -e rtv
-# launch vifm file manager
-super + alt + v
-    st -e ranger
-# launch wopr
-super + alt + w
-    st -e wopr report.xml
-# launch youtube viewer
-super + alt + y
-    st -e youtube-viewer
-    
-    
+	alacritty
+# launch ranger file manager
+super + shift + r
+    alacritty -e ranger
+super + shift + o
+    opera
+super + shift + g
+    google-chrome-stable
+alt + shift + t
+    alacritty -e org.telegram.desktop
+
 # DMENU SCRIPTS (Alt+Ctrl+Key)
 
 # run program launcher
 alt + ctrl + Return
-	dmenu_run
+	rofi -show run
 # edit common config files
-alt + ctrl + e
-   /home/dt/.dmenu/dmenu-edit-configs.sh
-# surfraw
-alt + ctrl + s
-   /home/dt/.dmenu/dmenu-surfraw.sh 
+alt + ctrl + c
+   exec ~/.config/.dmenu/dmenu-edit-configs.sh
 # common system montoring programs
 alt + ctrl + m
-   /home/dt/.dmenu/dmenu-sysmon.sh 
-# passmenu
-alt + ctrl + p
-   exec passmenu 
-# reddio Reddit viewer
-alt + ctrl + r
-   /home/dt/.dmenu/dmenu-reddio.sh 
-# stock trading programs
-alt + ctrl + t
-   /home/dt/.dmenu/dmenu-trading.sh 
+   exec ~/.config/.dmenu/dmenu-sysmon.sh 

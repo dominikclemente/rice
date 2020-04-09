@@ -1,15 +1,21 @@
 ########################
 alias abra='cd ~/lib/abradatas/'
+alias anal='cd ~/lib/devmons/analkit'
+alias docker='sudo docker'
+alias tquest='~/bin/TwilioQuest.AppImage & disown'
+alias weather='abra && cd weather && consrc && jn .'
+alias bz='bzip2 -d $1'
 alias abrac='cd ~/lib/abradatas/abracademy/'
 alias books='cd ~/dox/books'
 alias solidity='cd ~/lib/learn/solidity-0.5.12-course'
-alias ledger='~/Desktop/"Ledger Wallet" & disown && exit'
+alias ledger='~/bin/ledger-live.AppImage & disown && exit'
 alias sn='shutdown now'
 alias db='sudo mariadb -u root -p'
 alias sys='sudo systemctl'
 alias readbook='za ~/dox/books/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers.pdf & disown && exit'
 alias k='kill'
 alias jl='jupyter-lab'
+alias jn='jupyter-notebook'
 alias light='sudo systemctl restart lightdm'
 alias ll='ls -l'
 alias lla='ls -la'
@@ -25,12 +31,18 @@ alias wificonnect="nmcli device wifi connect"
 alias gmake=" cmake -DGeant4_DIR=/home/autodidactic/GEANT4/build/GEANT4/lib/Geant4-10.5.0"
 alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/autodidactic/bin/"'
 ########################
+# Blockchain Development
+########################
+alias ganache='~/bin/ganache.AppImage & disown && exit'
+alias tcon='truffle console'
+########################
 #     I N S T A L L    #
 ########################
 alias eng='export LC_ALL=C'
 alias cz='unset LC_ALL'
 alias paci='sudo pacman -S --noconfirm'
 alias pacu='sudo pacman -Syu'
+alias yayu='sudo yay -Syu'
 alias pacr='sudo pacman -R'
 alias auri='yay -S --noconfirm'
 alias aurr='yay -R'
@@ -58,7 +70,7 @@ alias const='source ~/bin/anaconda3/bin/activate'
 alias dvt='conda activate soai_dvt_backend'
 alias walls='cd ~/pix/Wallpapers/'
 #alias wal='wal -i'
-alias wallp='wal -i ~/pix/Wallpapers/keyboard.jpg'
+alias wallp='wal -i ~/pix/Wallpapers/one_piece_1.jpg'
 alias fill='feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"'
 alias consrc='source ~/anaconda3/bin/activate'
 alias exar='xarchiver -e'
