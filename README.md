@@ -10,10 +10,10 @@ WM: bspwm, KDE Plasma
 
 Bar: Polybar
 
-Terminal: st (formerly urxvt)
+Terminal: Alacritty
 
 Shell: zsh
 
-Shortcuts: sxhkd
+Shortcuts daemon: sxhkd
 
 Colorscheme: pywal
