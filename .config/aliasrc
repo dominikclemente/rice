@@ -1,35 +1,18 @@
 ########################
 alias abra='cd ~/lib/abradatas/'
-alias anal='cd ~/lib/devmons/analkit'
 alias docker='sudo docker'
-alias tquest='~/bin/TwilioQuest.AppImage & disown'
-alias weather='abra && cd weather && consrc && jn .'
-alias bz='bzip2 -d $1'
-alias abrac='cd ~/lib/abradatas/abracademy/'
 alias books='cd ~/dox/books'
-alias solidity='cd ~/lib/learn/solidity-0.5.12-course'
-alias ledger='~/bin/ledger-live.AppImage & disown && exit'
 alias sn='shutdown now'
-alias db='sudo mariadb -u root -p'
 alias sys='sudo systemctl'
-alias readbook='za ~/dox/books/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers.pdf & disown && exit'
 alias k='kill'
 alias jl='jupyter-lab'
 alias jn='jupyter-notebook'
-alias light='sudo systemctl restart lightdm'
 alias ll='ls -l'
 alias lla='ls -la'
 alias la='ls -a'
 alias sur='su root'
-alias lol='echo "abi.vsyscall32 = 0" >> /etc/sysctl.conf && sysctl -p'
-alias root="root -l"
-alias Octave="flatpak run org.octave.Octave"
-alias hdmi="pacmd set-card-profile 0 output:hdmi-stereo"
-alias analog="pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo"
 alias showifi="nmcli dev wifi"
 alias wificonnect="nmcli device wifi connect"
-alias gmake=" cmake -DGeant4_DIR=/home/autodidactic/GEANT4/build/GEANT4/lib/Geant4-10.5.0"
-alias gpath='export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/autodidactic/bin/"'
 ########################
 # Blockchain Development
 ########################
@@ -38,14 +21,6 @@ alias tcon='truffle console'
 ########################
 #     I N S T A L L    #
 ########################
-alias eng='export LC_ALL=C'
-alias cz='unset LC_ALL'
-alias paci='sudo pacman -S --noconfirm'
-alias pacu='sudo pacman -Syu'
-alias yayu='sudo yay -Syu'
-alias pacr='sudo pacman -R'
-alias auri='yay -S --noconfirm'
-alias aurr='yay -R'
 alias pipi='pip install'
 alias pipr='pip install -r'
 alias pypi='pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
@@ -57,33 +32,22 @@ alias cl='clear'
 alias clall='~/bin/close_windows.sh'
 alias vim='nvim'
 alias exe='chmod +x'
-alias headspace='ranger ~/Music/Headspace/Take\ Series\ -\ Start\ Here/Take\ 10/'
 alias ram='watch "ps --sort -rss -eo pid,pmem,rss,vsz,comm | head -40"'
 alias ka='killall'
 alias venv='virtualenv'
 alias findapp='ps -ef | grep'
-alias pulse='pulseaudio -k && pulseaudio --start'
 alias cin='source ~/anaconda3/bin/activate'
 alias conde='conda deactivate'
 alias conact='conda activate'
 alias const='source ~/bin/anaconda3/bin/activate'
-alias dvt='conda activate soai_dvt_backend'
 alias walls='cd ~/pix/Wallpapers/'
 #alias wal='wal -i'
-alias wallp='wal -i ~/pix/Wallpapers/one_piece_1.jpg'
-alias fill='feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"'
 alias consrc='source ~/anaconda3/bin/activate'
-alias exar='xarchiver -e'
-alias shot='escrotum -s'
 alias venvsrc='source venv/bin/activate'
 alias pymain='python main.py'
-alias za='zathura'
 alias stsvc='sudo systemctl start'
-alias trc='transmission-remote-cli -c arch:linux@localhost:9091'
 alias backpy='conde && conde'
 alias ydl='youtube-dl'
-alias polybar='./.config/polybar/launch.sh'
-alias bl='backpy && blueman-applet & disown'
 #########################
 #	  G I T         #
 #########################
@@ -101,13 +65,7 @@ alias gch='git checkout'
 #	C O N F		#
 #########################
 alias zshrc='vim ~/.zshrc'
-alias xinit='vim ~/.xinitrc'
-alias bspwmrc='vim ~/.config/bspwm/bspwmrc'
 alias bashrc='vim ~/.bashrc'
 alias aliasrc='vim ~/.config/aliasrc && source ~/.zshrc'
 alias xrc='vim ~/.Xresources && xrdb .Xresources'
 alias vimrc='vim ~/.config/nvim/init.vim'
-alias polyrc='vim ~/.config/polybar/config'
-alias default='vim ~/.config/mimeapps.list'
-alias sx='vim ~/.config/sxhkd/sxhkdrc'
-alias setup='xrdb ~/.Xresources && wallp & ~/.config/polybar/launch.sh && sleep 3 && st -e nitrogen --restore && wmname LG3D'
